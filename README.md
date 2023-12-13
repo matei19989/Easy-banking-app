@@ -1,2 +1,2 @@
 #App
-Easy banking application made by me !
+Easy banking application made by me using basic OOP concepts, map, list , enums and reading from a file !
