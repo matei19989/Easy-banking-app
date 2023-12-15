@@ -4,8 +4,9 @@
 #include<fstream>
 #include"User.h"
 #include"MyAccount.h"
-void readUsernamesFromFile(const std::string & filename,std::unordered_map < std::string, User > & users);
-void writeUsernameToFile(const std::string & filename,const std::string & username);
+void readUsernamesFromFile(const std::string & filename, std::unordered_map < std::string, User > & users);
+void writeUsernameToFile(const std::string & filename,
+    const std::string & username);
 void takeLoan();
 void Withdraw(MyAccount & account);
 void displayMenu();

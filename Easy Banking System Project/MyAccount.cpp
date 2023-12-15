@@ -20,6 +20,9 @@ double MyAccount::CheckDebt() const {
 void MyAccount::displayBalance() const {
     std::cout << "Available money in the bank is " << Money << '\n';
 }
+double MyAccount::displayOnlyBalance() const {
+    return Money;
+}
 void MyAccount::Deposit(double amount) {
     Money += amount;
 }

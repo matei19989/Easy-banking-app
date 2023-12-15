@@ -1,8 +1,9 @@
 #pragma once
 #include<string>
 #include "MyAccount.h"
-class User{
-std::string Username;
+
+class User {
+    std::string Username;
     MyAccount Account;
 
     public:
@@ -12,4 +13,3 @@ std::string Username;
     MyAccount & getAccount();
     const MyAccount & getAccount() const;
 };
-    

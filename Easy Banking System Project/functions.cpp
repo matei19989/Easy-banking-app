@@ -1,14 +1,14 @@
-#include "functions.h"
+#include"functions.h"
+#include"User.h"
+#include"MyAccount.h"
+#include"constants.h"
 #include<iostream>
 #include<string>
 #include<unordered_map>
 #include<fstream>
 #include<ctime>
 #include<limits>
-#include"User.h"
-#include"MyAccount.h"
-#define VALUES "date.txt"
-#define USERNAMES "usernames.txt"
+
 void readUsernamesFromFile(const std::string & filename,
     std::unordered_map < std::string, User > & users) {
     std::ifstream file(filename);
@@ -28,7 +28,7 @@ void writeUsernameToFile(const std::string & filename,
         file.close();
     }
 }
-void takeLoan() {
+void takeLoan(MyAccount &account) {
     double addDebt;
     std::cout << "Please enter the amount of your loan : " << "\n";
     std::cin >> addDebt;
@@ -36,12 +36,19 @@ void takeLoan() {
         std::cout << "Invalid loan amount. Please enter a positive value." << '\n';
         return;
     }
+    else {
+        account.addDebt(addDebt);
+        account.Deposit(addDebt);
+        account.displayBalance();
+        std::cout << "Updated debt balance: " << static_cast<int>(account.CheckDebt()) << '\n';
+
+    }
 }
 void Withdraw(MyAccount & account) {
     double withdrawAmount;
     std::cout << "Sum of money you want to withdraw: ";
     std::cin >> withdrawAmount;
-    if (withdrawAmount < 0 || withdrawAmount > account.CheckDebt()) {
+    if (withdrawAmount < 0 || withdrawAmount > account.displayOnlyBalance()) {
         std::cout << "Invalid withdrawal amount or exceeding account balance." << '\n';
         return;
     }
@@ -102,7 +109,7 @@ void performAction(User & currentUser, int choice) {
         std::cout << "Currency you are using is " << account.CheckCurrency() << '\n';
         break;
     case TAKE_LOAN:
-        takeLoan();
+        takeLoan(account);
         break;
     case PAY_LOAN:
         double payDebt;
