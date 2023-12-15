@@ -1,4 +1,5 @@
-#pragma once
+#ifndef USER_H
+#define USER_H
 #include<string>
 #include "MyAccount.h"
 
@@ -13,3 +14,4 @@ class User {
     MyAccount & getAccount();
     const MyAccount & getAccount() const;
 };
+#endif

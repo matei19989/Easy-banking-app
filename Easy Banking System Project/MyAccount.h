@@ -1,5 +1,5 @@
-#pragma once
-#include<string>
+#ifndef MY_ACCOUNT_H
+#define MY_ACCOUNT_H
 #include<list>
 
 class MyAccount {
@@ -18,6 +18,7 @@ class MyAccount {
     double addDebt(double amount);
     void FileNumbers(const std::string & date);
     void savedNumbers(const std::string & date);
-    
+    double displayOnlyBalance()const;
 
 };
+#endif
