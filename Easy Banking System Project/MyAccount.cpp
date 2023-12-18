@@ -30,6 +30,9 @@ double MyAccount::displayOnlyBalance() const {
 void MyAccount::Deposit(double amount) {
   Money += amount;
 }
+void MyAccount:: debtPayed(double amount){
+  Debt-=amount;
+}
 void MyAccount::Withdraw(double amount) {
   Money -= amount;
 

@@ -102,7 +102,7 @@ void performAction(User & currentUser, int choice) {
     Withdraw(account);
     break;
   case CHECK_DEBT:
-    if (account.CheckDebt()) {
+    if (account.CheckDebt() > 0) {
       std::cout << "You are in debt. Current debt is " << account.CheckDebt() << '\n';
     } else {
       std::cout << "You are debt free!";
@@ -116,7 +116,21 @@ void performAction(User & currentUser, int choice) {
     break;
   case PAY_LOAN:
     double payDebt;
+    std::cout << "Amount of your debt you are paying : " << '\n';
     std::cin >> payDebt; // DE TERMINAT
+    if ((payDebt > account.displayOnlyBalance())) {
+      account.Withdraw(payDebt);
+      account.debtPayed(payDebt);
+      std::cout << "You cannot pay more debt than you have " << '\n';
+    } else if (payDebt == account.displayOnlyBalance()) {
+      account.Withdraw(payDebt);
+      account.debtPayed(payDebt);
+      std::cout << "You have payed all of your debt " << '\n';
+    } else {
+      account.Withdraw(payDebt);
+      account.debtPayed(payDebt);
+      std::cout << "You have only paid a fraction of your debt, total debt remaining : " << account.displayOnlyBalance() << '\n';
+    }
     break;
   case EXIT:
     std::cout << "Exiting the application...";

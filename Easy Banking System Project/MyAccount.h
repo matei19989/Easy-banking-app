@@ -26,6 +26,7 @@ class MyAccount {
   void FileNumbers(const std::string & date);
   void savedNumbers(const std::string & date);
   double displayOnlyBalance() const;
+  void MyAccount:: debtPayed(double amount);
 
 };
 #endif
